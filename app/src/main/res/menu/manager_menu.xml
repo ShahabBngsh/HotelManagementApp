@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/roomUpdate"
+        android:title="Update Room"
+        android:icon="@drawable/payment"/>
+    <item
+        android:id="@+id/packageUpdate"
+        android:title="Update Package"
+        android:icon="@drawable/payment"/>
+    <item
+        android:id="@+id/customerDetail"
+        android:title="Customer Detail"
+        android:icon="@drawable/payment"/>
+    <item
+        android:id="@+id/duePayment"
+        android:title="Due Payment"
+        android:icon="@drawable/payment"/>
+    <item
+        android:id="@+id/payments"
+        android:title="Payment"
+        android:icon="@drawable/payment"/>
+<!--    <item-->
+<!--        android:id="@+id/checkout"-->
+<!--        android:title=""-->
+<!--        android:icon="@drawable/payment"/>-->
+
+</menu>
