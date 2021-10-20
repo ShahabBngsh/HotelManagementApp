@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_search_room">
+
+    <fragment
+        android:id="@+id/navigation_search_room"
+        android:name="com.shahab.hms.ui.search_room.SearchRoomFragment"
+        android:label="Room"
+        tools:layout="@layout/fragment_search_room" />
+
+    <fragment
+        android:id="@+id/navigation_search_package"
+        android:name="com.shahab.hms.ui.search_package.SearchPackageFragment"
+        android:label="Package"
+        tools:layout="@layout/fragment_search_package" />
+
+    <fragment
+        android:id="@+id/navigation_confirm_booking"
+        android:name="com.shahab.hms.ui.confirm_booking.ConfirmBookingFragment"
+        android:label="Booking"
+        tools:layout="@layout/fragment_confirm_booking" />
+
+    <fragment
+        android:id="@+id/navigation_cancel_booking"
+        android:name="com.shahab.hms.ui.cancel_booking.CancelBookingFragment"
+        android:label="Cancel Booking"
+        tools:layout="@layout/fragment_cancel_booking" />
+
+</navigation>
