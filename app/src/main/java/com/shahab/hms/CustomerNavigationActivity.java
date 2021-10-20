@@ -30,7 +30,7 @@ public class CustomerNavigationActivity extends AppCompatActivity {
                 R.id.navigation_search_room, R.id.navigation_search_package, R.id.navigation_confirm_booking)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_customer_navigation);
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+//        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
     }
 

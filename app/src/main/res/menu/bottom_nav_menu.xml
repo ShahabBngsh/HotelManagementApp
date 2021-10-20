@@ -3,22 +3,22 @@
 
     <item
         android:id="@+id/navigation_search_room"
-        android:icon="@drawable/ic_home_black_24dp"
+        android:icon="@drawable/ic_baseline_room_preferences_24"
         android:title="Room" />
 
     <item
         android:id="@+id/navigation_search_package"
-        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:icon="@drawable/ic_baseline_app_registration_24"
         android:title="Package" />
 
     <item
         android:id="@+id/navigation_confirm_booking"
-        android:icon="@drawable/ic_notifications_black_24dp"
+        android:icon="@drawable/ic_baseline_meeting_room_24"
         android:title="Confirm Booking" />
 
     <item
         android:id="@+id/navigation_cancel_booking"
-        android:icon="@drawable/ic_notifications_black_24dp"
+        android:icon="@drawable/ic_baseline_no_meeting_room_24"
         android:title="Cancel Booking" />
 
 

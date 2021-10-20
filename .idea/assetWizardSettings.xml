@@ -18,7 +18,11 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
+<<<<<<< HEAD
                                       <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/payment/baseline_payment_24.xml" />
+=======
+                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/no_meeting_room/baseline_no_meeting_room_24.xml" />
+>>>>>>> main
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -28,9 +32,14 @@
                         </option>
                         <option name="values">
                           <map>
+<<<<<<< HEAD
                             <entry key="color" value="eaeaea" />
                             <entry key="outputName" value="payment" />
                             <entry key="sourceFile" value="D:\FAST\Sem 7\SMD\Project\1st deliverable\HotelManagementSystem\HotelManagementApp" />
+=======
+                            <entry key="outputName" value="ic_baseline_no_meeting_room_24" />
+                            <entry key="sourceFile" value="C:\Users\Arun-PC\Desktop\Personal Files\Sem7\SMD\Project\HotelManagementApp" />
+>>>>>>> main
                           </map>
                         </option>
                       </PersistentState>
