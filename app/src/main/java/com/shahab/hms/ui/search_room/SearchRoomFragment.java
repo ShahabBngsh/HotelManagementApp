@@ -1,4 +1,4 @@
-package com.shahab.hms.ui.home;
+package com.shahab.hms.ui.search_room;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,24 +12,23 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.shahab.hms.R;
-import com.shahab.hms.databinding.FragmentHomeBinding;
+import com.shahab.hms.databinding.FragmentSearchRoomBinding;
 
-public class HomeFragment extends Fragment {
+public class SearchRoomFragment extends Fragment {
 
-    private HomeViewModel homeViewModel;
-    private FragmentHomeBinding binding;
+    private SearchRoomViewModel searchRoomViewModel;
+    private FragmentSearchRoomBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
+        searchRoomViewModel =
+                new ViewModelProvider(this).get(SearchRoomViewModel.class);
 
-        binding = FragmentHomeBinding.inflate(inflater, container, false);
+        binding = FragmentSearchRoomBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         final TextView textView = binding.textHome;
-        homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        searchRoomViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

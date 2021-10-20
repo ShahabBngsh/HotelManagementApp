@@ -1,14 +1,14 @@
-package com.shahab.hms.ui.home;
+package com.shahab.hms.ui.search_room;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class HomeViewModel extends ViewModel {
+public class SearchRoomViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public HomeViewModel() {
+    public SearchRoomViewModel() {
         mText = new MutableLiveData<>();
         mText.setValue("This is home fragment");
     }

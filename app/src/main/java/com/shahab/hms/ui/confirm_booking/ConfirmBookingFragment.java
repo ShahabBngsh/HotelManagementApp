@@ -1,4 +1,4 @@
-package com.shahab.hms.ui.notifications;
+package com.shahab.hms.ui.confirm_booking;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,24 +12,23 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.shahab.hms.R;
-import com.shahab.hms.databinding.FragmentNotificationsBinding;
+import com.shahab.hms.databinding.FragmentConfirmBookingBinding;
 
-public class NotificationsFragment extends Fragment {
+public class ConfirmBookingFragment extends Fragment {
 
-    private NotificationsViewModel notificationsViewModel;
-    private FragmentNotificationsBinding binding;
+    private ConfirmBookingViewModel confirmBookingViewModel;
+    private FragmentConfirmBookingBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        notificationsViewModel =
-                new ViewModelProvider(this).get(NotificationsViewModel.class);
+        confirmBookingViewModel =
+                new ViewModelProvider(this).get(ConfirmBookingViewModel.class);
 
-        binding = FragmentNotificationsBinding.inflate(inflater, container, false);
+        binding = FragmentConfirmBookingBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         final TextView textView = binding.textNotifications;
-        notificationsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        confirmBookingViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
