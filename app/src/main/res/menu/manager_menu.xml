@@ -6,7 +6,7 @@
         android:icon="@drawable/payment"/>
     <item
         android:id="@+id/addPackage"
-        android:title="add Room"
+        android:title="add Package"
         android:icon="@drawable/payment"/>
     <item
         android:id="@+id/roomUpdate"

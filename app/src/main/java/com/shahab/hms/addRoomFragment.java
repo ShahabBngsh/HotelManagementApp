@@ -1,12 +1,24 @@
 package com.shahab.hms;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ActionMenuView;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+
+import java.io.IOException;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,7 +26,10 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class addRoomFragment extends Fragment {
-
+    Button uploadPic, addRoom;
+    EditText price, roomId, desc;
+    Uri selectedImage=null;
+    ImageView picture;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -59,6 +74,40 @@ public class addRoomFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_room, container, false);
+
+        View view=inflater.inflate(R.layout.fragment_add_room, container, false);
+        uploadPic=view.findViewById(R.id.addRoom_UploadPic);
+        addRoom=view.findViewById(R.id.addRoom_addRoom);
+        price=view.findViewById(R.id.addRoom_Price);
+        roomId=view.findViewById(R.id.addRoom_Id);
+        desc=view.findViewById(R.id.addRoom_Description);
+        picture=view.findViewById(R.id.addRoom_image);
+        uploadPic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent();
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                intent.setType("image/*");
+                startActivityForResult(intent,200);
+
+            }
+        });
+        return view;
+
+    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==200 && resultCode== Activity.RESULT_OK){
+            selectedImage=data.getData();
+            try {
+                Bitmap bitmap= MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(),selectedImage);
+                picture.setImageBitmap(bitmap);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
     }
 }

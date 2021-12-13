@@ -6,9 +6,79 @@
     tools:context=".addRoomFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:layout_marginBottom="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:weightSum="10"
+        android:orientation="vertical"
+        android:background="@color/black">
+        <TextView
+            android:id="@+id/addRoom_Title"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:text="Add Room"
+            android:textSize="30dp"
+            android:gravity="center"
+            android:textColor="@color/white">
+
+        </TextView>
+        <ImageView
+            android:id="@+id/addRoom_image"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:src="@drawable/camera">
+        </ImageView>
+        <EditText
+            android:id="@+id/addRoom_Id"
+            android:layout_margin="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:hint="Enter Room Id"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white">
+        </EditText>
+        <EditText
+            android:id="@+id/addRoom_Price"
+            android:layout_margin="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:hint="Enter Room Price"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white">
+        </EditText>
+        <EditText
+            android:id="@+id/addRoom_Description"
+            android:layout_margin="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:hint="Enter Room Description"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white">
+        </EditText>
+        <Button
+            android:id="@+id/addRoom_UploadPic"
+            android:layout_margin="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="Upload Picture"
+            android:textColor="@color/white">
+        </Button>
+        <Button
+            android:id="@+id/addRoom_addRoom"
+            android:layout_margin="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="Add Room"
+            android:textColor="@color/white">
+        </Button>
+    </LinearLayout>
 
 </FrameLayout>

@@ -27,10 +27,11 @@ public class ManagerNavigationActivity extends AppCompatActivity {
 
             Fragment appFragment=null;
             switch (item.getItemId()){
-                case R.id.addPackage:
+                case R.id.addRoom:
                     appFragment=new addRoomFragment();
                     break;
-                case R.id.addRoom:
+
+                case R.id.addPackage:
                     appFragment=new addPackageFragment();
                     break;
                 case R.id.roomUpdate:
