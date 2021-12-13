@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../../../layout/custom_preview.xml" value="0.21041666666666667" />
         <entry key="..\:/FAST/Sem 7/SMD/Project/1st deliverable/HotelManagementSystem/HotelManagementApp/app/src/main/res/layout/activity_manager_navigation.xml" value="0.20416666666666666" />
         <entry key="..\:/FAST/Sem 7/SMD/Project/1st deliverable/HotelManagementSystem/HotelManagementApp/app/src/main/res/layout/fragment_checkout.xml" value="0.1" />
         <entry key="..\:/FAST/Sem 7/SMD/Project/1st deliverable/HotelManagementSystem/HotelManagementApp/app/src/main/res/layout/fragment_customer_details.xml" value="0.1" />
@@ -19,6 +20,10 @@
         <entry key="..\:/Users/Arun-PC/Desktop/Personal Files/Sem7/SMD/Project/HotelManagementApp/app/src/main/res/layout/fragment_search_package.xml" value="0.22395833333333334" />
         <entry key="..\:/Users/Arun-PC/Desktop/Personal Files/Sem7/SMD/Project/HotelManagementApp/app/src/main/res/layout/fragment_search_room.xml" value="0.10364583333333334" />
         <entry key="..\:/Users/Arun-PC/Desktop/Personal Files/Sem7/SMD/Project/HotelManagementApp/app/src/main/res/menu/bottom_nav_menu.xml" value="0.22395833333333334" />
+        <entry key="app/src/main/res/drawable/background.xml" value="0.21145833333333333" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_signin.xml" value="0.5" />
       </map>
     </option>
   </component>
