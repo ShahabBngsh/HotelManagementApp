@@ -7,10 +7,75 @@
     android:background="@color/black">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Update Room"
-        android:textColor="@color/white"/>
+        android:weightSum="10"
+        android:orientation="vertical">
+        <TextView
+            android:layout_margin="20dp"
+
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:text="Update Room"
+            android:textColor="@color/white"
+            android:textSize="30dp"
+            android:gravity="center">
+        </TextView>
+        <EditText
+            android:layout_margin="20dp"
+            android:id="@+id/updateRoom_roomId"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:hint="Enter Room Id"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white">
+        </EditText>
+        <ImageView
+            android:layout_margin="20dp"
+            android:id="@+id/updateRoom_image"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:src="@drawable/camera">
+        </ImageView>
+        <Button
+            android:layout_margin="20dp"
+            android:id="@+id/updateRoom_uploadPic"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="Upload Pic"
+            android:textColor="@color/white"/>
+        <Button
+            android:layout_margin="20dp"
+            android:id="@+id/updateRoom_UpdatePic"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="Update Pic"
+            android:textColor="@color/white"/>
+        <EditText
+            android:layout_margin="20dp"
+            android:id="@+id/updateRoom_newPrice"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:hint="Enter New Price"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white">
+        </EditText>
+        <Button
+            android:layout_margin="20dp"
+
+            android:id="@+id/updateRoom_updatePrice"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="Update Price"
+            android:textColor="@color/white"/>
+    </LinearLayout>
 
 </FrameLayout>

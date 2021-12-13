@@ -2,11 +2,21 @@ package com.shahab.hms;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,7 +24,10 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class RoomUpdateFragment extends Fragment {
-
+    Button updatePrice, uploadPic, updatePic;
+    EditText roomId, newPrice;
+    DatabaseReference showRoomReference;
+    FirebaseDatabase database;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -59,6 +72,40 @@ public class RoomUpdateFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_room_update, container, false);
+        View view= inflater.inflate(R.layout.fragment_room_update, container, false);
+        roomId=view.findViewById(R.id.updateRoom_roomId);
+        updatePic=view.findViewById(R.id.updateRoom_UpdatePic);
+        uploadPic=view.findViewById(R.id.updateRoom_uploadPic);
+        newPrice=view.findViewById(R.id.updateRoom_newPrice);
+        updatePrice=view.findViewById(R.id.updateRoom_updatePrice);
+
+        updatePrice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                database= FirebaseDatabase.getInstance();
+//        reference=database.getReference("Users/"+currentuser+"/Profile");
+                showRoomReference=database.getReference("Package/");
+                showRoomReference.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for(DataSnapshot data:snapshot.getChildren()){
+                            if(data.child("id").getValue(String.class).equals(roomId.getText().toString())){
+                                DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Package").child(data.getKey().toString());
+                                mDatabase.child("price").setValue(newPrice.getText().toString());
+                                Toast.makeText(getActivity(),"Price Updated",Toast.LENGTH_SHORT).show();
+                            }
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+            }
+        });
+        return view;
     }
 }
