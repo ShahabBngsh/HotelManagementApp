@@ -39,7 +39,7 @@ public class ProfileRVAdapter  extends RecyclerView.Adapter<ProfileRVAdapter.pro
 
     @Override
     public void onBindViewHolder(@NonNull profileViewHolder holder, int position) {
-
+        Toast.makeText(c, "RVVVVVVVVVVVVVVV", Toast.LENGTH_SHORT).show();
         holder.profile_row_name.setText(ls.get(position).getName());
         holder.profile_row_email.setText(ls.get(position).getEmail());
         holder.profile_row_contactno.setText(ls.get(position).getContactno());
@@ -113,6 +113,8 @@ public class ProfileRVAdapter  extends RecyclerView.Adapter<ProfileRVAdapter.pro
         TextView profile_row_name, profile_row_email, profile_row_contactno, profile_row_address, profile_row_bio;
         public profileViewHolder(@NonNull View itemView) {
             super(itemView);
+            Toast.makeText(c, "Clicked ...", Toast.LENGTH_SHORT).show();
+
             profile_row_name = itemView.findViewById(R.id.profile_row_name);
             profile_row_email = itemView.findViewById(R.id.profile_row_email);
             profile_row_contactno = itemView.findViewById(R.id.profile_row_phone);
