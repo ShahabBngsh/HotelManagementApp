@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/black"
+    android:orientation="vertical"
+    android:weightSum="10">
+<!--    ////name email phone address bio-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:backgroundTint="#5C5B5B"
+        android:padding="5dp">
+
+        <ImageView
+            android:id="@+id/profile_row_portrait"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_baseline_person_24"
+            />
+
+        <TextView
+            android:id="@+id/profile_row_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/profile_row_portrait"
+            android:layout_margin="10dp"
+            android:textSize="22dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:hint="John Doe"/>
+
+        <TextView
+            android:id="@+id/profile_row_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/profile_row_name"
+            android:layout_alignLeft="@+id/profile_row_name"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:hint="email@email.com"
+            />
+
+        <TextView
+            android:id="@+id/profile_row_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/profile_row_email"
+            android:layout_alignLeft="@+id/profile_row_name"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:hint="03011234567"
+            />
+        <TextView
+            android:id="@+id/profile_row_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/profile_row_phone"
+            android:layout_alignLeft="@+id/profile_row_name"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:hint="F11/2 street 69"
+            />
+        <TextView
+            android:id="@+id/profile_row_bio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/profile_row_address"
+            android:layout_alignLeft="@+id/profile_row_name"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:hint="This is just random bio"
+            />
+        <View
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#D0FFFFFF"
+            android:hint="Name"
+            android:layout_below="@+id/profile_row_bio"
+            />
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
