@@ -70,8 +70,15 @@ public class MainActivity extends AppCompatActivity {
                                 editor.putString("userid", user.getUid());
                                 editor.apply();
 
-                                Intent navigationIntent = new Intent(MainActivity.this, ManagerNavigationActivity.class);
-                                startActivity(navigationIntent);
+                                if(user != null && user.getUid().equals("cIhWgHHzTzPSIwhKPFDQLWmzNzy1")){
+                                    Toast.makeText(MainActivity.this, "i'm da MANAGA", Toast.LENGTH_SHORT).show();
+                                    Intent navigationIntent = new Intent(MainActivity.this, ManagerNavigationActivity.class);
+                                    startActivity(navigationIntent);
+                                } else if( user != null && !user.getUid().equals("cIhWgHHzTzPSIwhKPFDQLWmzNzy1")) {
+                                    Toast.makeText(MainActivity.this, "the customa is always right", Toast.LENGTH_SHORT).show();
+                                    Intent navigationIntent = new Intent(MainActivity.this, CustomerNavigationActivity.class);
+                                    startActivity(navigationIntent);
+                                }
 
 
                             } else {
@@ -95,13 +102,23 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        Toast.makeText(this, "MAIN ACTIVITY", Toast.LENGTH_SHORT).show();
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
+        Toast.makeText(this, "the customa is always right", Toast.LENGTH_SHORT).show();
+        if(currentUser != null && currentUser.getUid().equals("cIhWgHHzTzPSIwhKPFDQLWmzNzy1")){
+            Toast.makeText(this, "i'm da MANAGA", Toast.LENGTH_SHORT).show();
             Intent navigationIntent = new Intent(this, ManagerNavigationActivity.class);
+            startActivity(navigationIntent);
+        } else if( currentUser != null && !currentUser.getUid().equals("cIhWgHHzTzPSIwhKPFDQLWmzNzy1")) {
+            Intent navigationIntent = new Intent(this, CustomerNavigationActivity.class);
             startActivity(navigationIntent);
         }
 //        Intent intent = new Intent(this, CustomerNavigationActivity.class);
 //        startActivity(intent);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        FirebaseAuth.getInstance().signOut();
     }
 }

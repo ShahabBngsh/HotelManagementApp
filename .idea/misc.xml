@@ -23,7 +23,7 @@
         <entry key="app/src/main/res/drawable/background.xml" value="0.21145833333333333" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/activity_signin.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/activity_signin.xml" value="0.33" />
       </map>
     </option>
   </component>
