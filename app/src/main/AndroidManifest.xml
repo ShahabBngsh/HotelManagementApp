@@ -27,12 +27,12 @@
             android:name=".CustomerNavigationActivity"
             android:exported="true" />
         <activity
-            android:name=".ManagerNavigationActivity"
+            android:name=".MainActivity"
             android:exported="true">
 
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".ManagerNavigationActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
