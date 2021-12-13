@@ -6,10 +6,12 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,8 +19,19 @@ import android.widget.ActionMenuView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
+import java.util.Date;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -30,6 +43,8 @@ public class addRoomFragment extends Fragment {
     EditText price, roomId, desc;
     Uri selectedImage=null;
     ImageView picture;
+    DatabaseReference storeRoomReference;
+    FirebaseDatabase database;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -82,6 +97,82 @@ public class addRoomFragment extends Fragment {
         roomId=view.findViewById(R.id.addRoom_Id);
         desc=view.findViewById(R.id.addRoom_Description);
         picture=view.findViewById(R.id.addRoom_image);
+        database= FirebaseDatabase.getInstance();
+        storeRoomReference=database.getReference("Room");
+        addRoom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.wtf("Debug", "onCreate() called");
+                Toast.makeText(getActivity(),"In here",Toast.LENGTH_SHORT).show();
+
+                if(selectedImage!=null){
+                    Toast.makeText(getActivity(),selectedImage.toString(),Toast.LENGTH_SHORT).show();
+
+                    StorageReference storageReference= FirebaseStorage.getInstance().getReference();
+                    Toast.makeText(getActivity(),storageReference.toString(),Toast.LENGTH_SHORT).show();
+
+                    storageReference=storageReference.child("Room_pic/"+roomId.getText().toString()+new Date().getTime() +".jpg");
+                    storageReference.putFile(selectedImage)
+                            .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                @Override
+                                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                    Task<Uri> task=taskSnapshot.getStorage().getDownloadUrl();
+                                    task.addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                        @Override
+                                        public void onSuccess(Uri uri) {
+                                            String createProfile_dp=uri.toString();
+                                            storeRoomReference.push().setValue(
+                                                    new room(
+                                                            roomId.getText().toString(),
+                                                            desc.getText().toString(),
+                                                            createProfile_dp,
+                                                            price.getText().toString())
+                                            );
+
+                                            Log.wtf("Debug", "onCreate() called");
+//                                            Toast.makeText(createProfile.this,"Here",Toast.LENGTH_SHORT).show();
+//                                            Intent intent=new Intent(createProfile.this,MainActivity.class);
+//                                            intent.putExtra("name",firstName.getText().toString()+"  "+lastName.getText().toString());
+//                                            intent.putExtra("phNo",phNo.getText().toString());
+//                                            startActivity(intent);
+//                                            finish();
+
+                                        }
+                                    })
+                                            .addOnFailureListener(new OnFailureListener() {
+                                                @Override
+                                                public void onFailure(@NonNull Exception e) {
+                                                    Log.wtf("Debug", "task on failure called");
+//                                                    Toast.makeText(
+//                                                            createProfile.this,
+//                                                            "Failed to upload image and data",
+//                                                            Toast.LENGTH_LONG).show();
+
+                                                }
+                                            });
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(
+                                            getActivity(),
+                                            "Picture uploading failed",
+                                            Toast.LENGTH_LONG).show();
+
+                                }
+                            });
+
+                }
+                else{
+//                    Toast.makeText(
+//                            createProfile.this,
+//                            "Select Display Picture",
+//                            Toast.LENGTH_LONG).show();
+                }
+
+            }
+        });
         uploadPic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
