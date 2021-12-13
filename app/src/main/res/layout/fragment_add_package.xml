@@ -6,9 +6,63 @@
     tools:context=".addPackageFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:layout_marginBottom="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:weightSum="8"
+        android:orientation="vertical"
+        android:background="@color/black">
+        <TextView
+            android:id="@+id/addPackage_Title"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="4"
+            android:text="Add Package"
+            android:textSize="30dp"
+            android:gravity="center"
+            android:textColor="@color/white">
+
+        </TextView>
+        <EditText
+            android:id="@+id/addPackage_Id"
+            android:layout_margin="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:hint="Enter Package Id"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white">
+        </EditText>
+        <EditText
+            android:id="@+id/addPackage_Price"
+            android:layout_margin="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:hint="Enter Package Price"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white">
+        </EditText>
+        <EditText
+            android:id="@+id/addPackage_Description"
+            android:layout_margin="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:hint="Enter Package Description"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white">
+        </EditText>
+        <Button
+            android:id="@+id/addPackage_addPackage"
+            android:layout_margin="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="Add Package"
+            android:textColor="@color/white">
+        </Button>
+    </LinearLayout>
 
 </FrameLayout>

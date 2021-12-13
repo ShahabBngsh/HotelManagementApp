@@ -103,13 +103,13 @@ public class addRoomFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Log.wtf("Debug", "onCreate() called");
-                Toast.makeText(getActivity(),"In here",Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(),"In here",Toast.LENGTH_SHORT).show();
 
                 if(selectedImage!=null){
-                    Toast.makeText(getActivity(),selectedImage.toString(),Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getActivity(),selectedImage.toString(),Toast.LENGTH_SHORT).show();
 
                     StorageReference storageReference= FirebaseStorage.getInstance().getReference();
-                    Toast.makeText(getActivity(),storageReference.toString(),Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getActivity(),storageReference.toString(),Toast.LENGTH_SHORT).show();
 
                     storageReference=storageReference.child("Room_pic/"+roomId.getText().toString()+new Date().getTime() +".jpg");
                     storageReference.putFile(selectedImage)
@@ -128,7 +128,7 @@ public class addRoomFragment extends Fragment {
                                                             createProfile_dp,
                                                             price.getText().toString())
                                             );
-
+                                            Toast.makeText(getActivity(),"New Room Added", Toast.LENGTH_SHORT).show();
                                             Log.wtf("Debug", "onCreate() called");
 //                                            Toast.makeText(createProfile.this,"Here",Toast.LENGTH_SHORT).show();
 //                                            Intent intent=new Intent(createProfile.this,MainActivity.class);
