@@ -1,15 +1,23 @@
 package com.shahab.hms;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -17,6 +25,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.io.IOException;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,8 +36,10 @@ import com.google.firebase.database.ValueEventListener;
 public class RoomUpdateFragment extends Fragment {
     Button updatePrice, uploadPic, updatePic;
     EditText roomId, newPrice;
+    ImageView picture;
     DatabaseReference showRoomReference;
     FirebaseDatabase database;
+    Uri selectedImage=null;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -77,6 +89,7 @@ public class RoomUpdateFragment extends Fragment {
         updatePic=view.findViewById(R.id.updateRoom_UpdatePic);
         uploadPic=view.findViewById(R.id.updateRoom_uploadPic);
         newPrice=view.findViewById(R.id.updateRoom_newPrice);
+        picture=view.findViewById(R.id.updateRoom_image);
         updatePrice=view.findViewById(R.id.updateRoom_updatePrice);
 
         updatePrice.setOnClickListener(new View.OnClickListener() {
@@ -106,6 +119,31 @@ public class RoomUpdateFragment extends Fragment {
 
             }
         });
+        uploadPic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent();
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                intent.setType("image/*");
+                startActivityForResult(intent,200);
+
+            }
+        });
         return view;
+    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==200 && resultCode== Activity.RESULT_OK){
+            selectedImage=data.getData();
+            try {
+                Bitmap bitmap= MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(),selectedImage);
+                picture.setImageBitmap(bitmap);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
     }
 }
