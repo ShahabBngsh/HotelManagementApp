@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "591311261097",
+    "project_id": "hms-hotelmanagementsystem",
+    "storage_bucket": "hms-hotelmanagementsystem.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:591311261097:android:2c910778a520880d4548b8",
+        "android_client_info": {
+          "package_name": "com.shahab.hms"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "591311261097-vvg96qavs2mdulqnuoq77mrnkid96tn3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTMkAKs6CceKF7nmvWEW_3LPO6Lwc1eSo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "591311261097-vvg96qavs2mdulqnuoq77mrnkid96tn3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
