@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="80dp">
+
+    <ImageView
+        android:id="@+id/search_room_pic"
+        android:src="@android:drawable/sym_def_app_icon"
+
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20dp"
+        />
+
+    <TextView
+        android:id="@+id/search_room_desc"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/search_room_pic" />
+
+    <TextView
+        android:id="@+id/search_room_id"
+
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+
+        android:layout_below="@id/search_room_desc"
+        android:layout_toRightOf="@id/search_room_pic"
+
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+
+        />
+
+    <TextView
+        android:id="@+id/search_room_price"
+
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/search_room_desc"
+
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+
+        />
+
+
+
+</RelativeLayout>

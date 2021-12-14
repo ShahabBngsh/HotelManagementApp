@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.search_room.SearchRoomFragment"
+    android:orientation="vertical"
+    android:paddingTop="80dp"
+    android:background="@color/black"
+    >
+
+    <TextView
+        android:id="@+id/confirm_booking_text"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        
+        android:text="Confirm Booking"
+        android:textSize="30dp"
+        android:textColor="@color/white"
+
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        />
+    
+    <TextView
+        android:id="@+id/confirm_room_id"
+
+        android:text="test"
+        android:textSize="20dp"
+        android:textColor="@color/white"
+
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+
+
+        android:layout_below="@id/confirm_booking_text"
+        android:layout_marginTop="60dp"
+        android:layout_marginLeft="30dp"
+
+
+
+        />
+
+    <TextView
+        android:id="@+id/confirm_room_desc"
+
+        android:text="testing description"
+        android:textSize="20dp"
+        android:textColor="@color/white"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+
+        android:layout_below="@id/confirm_booking_text"
+        android:layout_toRightOf="@id/confirm_room_id"
+        android:layout_marginTop="60dp"
+        android:layout_marginHorizontal="30dp"
+
+        />
+
+    <TextView
+        android:id="@+id/confirm_package_id"
+
+        android:text="test"
+        android:textSize="20dp"
+        android:textColor="@color/white"
+
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+
+
+        android:layout_below="@id/confirm_room_id"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp"
+
+
+
+        />
+
+    <TextView
+        android:id="@+id/confirm_package_desc"
+
+        android:text="testing description"
+        android:textSize="20dp"
+        android:textColor="@color/white"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+
+        android:layout_below="@id/confirm_room_id"
+        android:layout_toRightOf="@id/confirm_package_id"
+        android:layout_marginTop="30dp"
+        android:layout_marginHorizontal="30dp"
+
+        />
+
+    <TextView
+        android:id="@+id/confirm_price_text"
+
+        android:text="Total Price"
+        android:textSize="20dp"
+        android:textColor="@color/white"
+
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+
+
+        android:layout_below="@id/confirm_package_id"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp"
+
+
+
+        />
+
+    <TextView
+        android:id="@+id/confirm_price_amount"
+
+        android:text="testing description"
+        android:textSize="20dp"
+        android:textColor="@color/white"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+
+        android:layout_below="@id/confirm_package_id"
+        android:layout_toRightOf="@id/confirm_package_id"
+        android:layout_marginTop="30dp"
+        android:layout_marginHorizontal="30dp"
+
+        />
+
+
+    <Button
+        android:id="@+id/confirm_button"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/confirm_price_text"
+        android:layout_centerHorizontal="true"
+
+        android:layout_marginTop="80dp"
+
+        android:text="Submit"
+        />
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/text_home"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginStart="8dp"-->
+    <!--        android:layout_marginTop="8dp"-->
+    <!--        android:layout_marginEnd="8dp"-->
+    <!--        android:textAlignment="center"-->
+    <!--        android:textSize="20sp"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent" />-->
+</RelativeLayout>

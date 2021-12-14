@@ -1,7 +1,8 @@
 package com.shahab.hms;
 
 public class room {
-    private String roomId, desc, pic, price;
+    private String roomId, desc, price;
+    private String pic;
 
     public room(String roomId, String desc, String pic, String price) {
         this.roomId = roomId;

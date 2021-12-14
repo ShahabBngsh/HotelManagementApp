@@ -27,7 +27,7 @@ public class CustomerNavigationActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_search_room, R.id.navigation_search_package, R.id.navigation_confirm_booking)
+                R.id.navigation_search_room, R.id.navigation_cancel_booking)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_customer_navigation);
 //        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
