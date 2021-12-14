@@ -40,7 +40,7 @@ import java.util.concurrent.CountDownLatch;
 public class CustomerDetailsFragment extends Fragment implements SearchView.OnQueryTextListener{
     RecyclerView rv;
     List<Profile> ls;
-    ProfileRVAdapter adapter, adapter_arrlist;
+    ProfileRVAdapter adapter;
     SearchView searchView;
     ArrayList<Profile> arrayList = new ArrayList<>();
     // TODO: Rename parameter arguments, choose names that match
@@ -112,9 +112,8 @@ public class CustomerDetailsFragment extends Fragment implements SearchView.OnQu
         ls.add(new Profile("Zohair", "f@a.com", "03014321765", "F11/2 street 69", "another random bio"));
         ls.add(new Profile("Saad", "g@a.com", "03011243563", "F6/1 street 5", ""));
         getUsersFromFirebase();
-        adapter = new ProfileRVAdapter(arrayList, getContext());
+        adapter = new ProfileRVAdapter(ls, getContext());
 //        adapter_ls.wait(50);
-        arrayList.addAll(ls);
         RecyclerView.LayoutManager lm = new LinearLayoutManager(getContext());
         rv.setLayoutManager(lm);
         rv.setAdapter(adapter);
@@ -122,7 +121,8 @@ public class CustomerDetailsFragment extends Fragment implements SearchView.OnQu
 
         searchView = view.findViewById(R.id.home_search);
         searchView.setOnQueryTextListener(this);
-
+//        Toast.makeText(getContext(), String.valueOf(arrayList.size()) + " | " + String.valueOf(ls.size()), Toast.LENGTH_SHORT).show();
+        arrayList.addAll(ls);
         return view;
     }
 
@@ -195,8 +195,8 @@ public class CustomerDetailsFragment extends Fragment implements SearchView.OnQu
 
     @Override
     public boolean onQueryTextChange(String newText) {
-        Toast.makeText(getContext(), "*" + newText, Toast.LENGTH_SHORT).show();
-        adapter.filter(newText);
+
+        adapter.filter(newText, arrayList);
         return true;
     }
     @Override
