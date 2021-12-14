@@ -53,7 +53,10 @@ public class ProfileRVAdapter extends RecyclerView.Adapter<ProfileRVAdapter.prof
         return null;
     }
 
-    public void filter(String text) {
+    public void filter(String text, List<Profile> oldls) {
+        lsCopy.clear();
+//        Toast.makeText(c, String.valueOf(lsCopy.size()), Toast.LENGTH_SHORT).show();
+        lsCopy.addAll(oldls);
         ls.clear();
         if(text.isEmpty()){
             ls.addAll(lsCopy);
