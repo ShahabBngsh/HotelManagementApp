@@ -1,14 +1,106 @@
 package com.shahab.hms;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class ConfirmBookingActivity extends AppCompatActivity {
+
+    String roomId;
+    String packageId;
+    TextView room_desc, room_id, package_desc, package_id, price_amount;
+
+    int roomPrice = 0;
+    int packagePrice = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.confirm_booking);
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            roomId = extras.getString("roomId");
+            packageId = extras.getString("packageId");
+        }
+
+        room_desc = findViewById(R.id.confirm_room_desc);
+        room_id = findViewById(R.id.confirm_room_id);
+        package_desc = findViewById(R.id.confirm_package_desc);
+        package_id = findViewById(R.id.confirm_package_id);
+        price_amount = findViewById(R.id.confirm_price_amount);
+
+        setValues();
+
+        Toast.makeText(ConfirmBookingActivity.this, roomId+" "+packageId, Toast.LENGTH_SHORT).show();
+
+
+
     }
+
+    private void setValues() {
+        room_id.setText(roomId);
+        package_id.setText(packageId);
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference room_ref = database.getReference("/Room");
+
+        room_ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot data:snapshot.getChildren()) {
+                    String to_add_id = data.child("roomId").getValue().toString();
+
+                    if (to_add_id.equals(roomId)) {
+                        room_desc.setText(data.child("desc").getValue().toString());
+                        roomPrice = Integer.parseInt(data.child("price").getValue().toString());
+                    }
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        DatabaseReference package_ref = database.getReference("/Package");
+
+        package_ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot data:snapshot.getChildren()) {
+                    String to_add_pack_id = data.child("id").getValue().toString();
+
+                    if (to_add_pack_id.equals(packageId)) {
+                        package_desc.setText(data.child("desc").getValue().toString());
+                        packagePrice = Integer.parseInt(data.child("price").getValue().toString());
+                    }
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        
+
+    }
+
+
 }

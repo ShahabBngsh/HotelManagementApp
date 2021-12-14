@@ -11,17 +11,6 @@
         android:label="Room"
         tools:layout="@layout/fragment_search_room" />
 
-    <fragment
-        android:id="@+id/navigation_search_package"
-        android:name="com.shahab.hms.ui.search_package.SearchPackageFragment"
-        android:label="Package"
-        tools:layout="@layout/fragment_search_package" />
-
-    <fragment
-        android:id="@+id/navigation_confirm_booking"
-        android:name="com.shahab.hms.ui.confirm_booking.ConfirmBookingFragment"
-        android:label="Booking"
-        tools:layout="@layout/fragment_confirm_booking" />
 
     <fragment
         android:id="@+id/navigation_cancel_booking"

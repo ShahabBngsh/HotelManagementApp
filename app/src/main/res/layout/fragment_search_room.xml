@@ -29,13 +29,16 @@
         android:background="@color/white"
         />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Insert Recycler View Here"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/search_room_rv"
+        android:background="@color/white"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
         android:layout_marginHorizontal="30dp"
         android:layout_marginTop="20dp"
-        android:textColor="@color/white"
+        android:layout_marginBottom="80dp"
         />
 
 <!--    <TextView-->
