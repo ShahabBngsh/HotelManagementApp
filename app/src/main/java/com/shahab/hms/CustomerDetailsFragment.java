@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.shahab.hms.databinding.FragmentCustomerDetailsBinding;
 
@@ -27,11 +28,12 @@ import java.util.List;
  * Use the {@link CustomerDetailsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CustomerDetailsFragment extends Fragment {
+public class CustomerDetailsFragment extends Fragment implements SearchView.OnQueryTextListener{
     RecyclerView rv;
-//    LinearLayout newContact;
-//    LinearLayout newGroup;
     List<Profile> ls;
+    ProfileRVAdapter adapter;
+    SearchView searchView;
+    ArrayList<Profile> arrayList = new ArrayList<>();
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -100,7 +102,7 @@ public class CustomerDetailsFragment extends Fragment {
         ls.add(new Profile("Zain", "e@a.com", "03013216541", "G7/3 street 19", "htis is a bio"));
         ls.add(new Profile("Zohair", "f@a.com", "03014321765", "F11/2 street 69", "another random bio"));
         ls.add(new Profile("Saad", "g@a.com", "03011243563", "F6/1 street 5", ""));
-
+        arrayList.addAll(ls);
 //        contactsContactsList.add(new contactsSingleContact("Friend1","11111111111"));
 //        contactsContactsList.add(new contactsSingleContact("Friend1","11111111111"));
 //        contactsContactsList.add(new contactsSingleContact("Friend1","11111111111"));
@@ -110,32 +112,32 @@ public class CustomerDetailsFragment extends Fragment {
 //        contactsContactsList.add(new contactsSingleContact("Friend1","11111111111"));
 //        contactsContactsList.add(new contactsSingleContact("Friend1","11111111111"));
 //        contactsContactsList.add(new contactsSingleContact("Friend1","11111111111"));
-        ProfileRVAdapter adapter=new ProfileRVAdapter(ls, getContext());
-        RecyclerView.LayoutManager lm=new LinearLayoutManager(getContext());
+        adapter = new ProfileRVAdapter(arrayList, getContext());
+        RecyclerView.LayoutManager lm = new LinearLayoutManager(getContext());
         rv.setLayoutManager(lm);
         rv.setAdapter(adapter);
-//        String name=this.getArguments().getString("name");
-//        String phNo=this.getArguments().getString("phNo");
-//        newContact.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent=new Intent(getContext(),addContact.class);
-//                intent.putExtra("name",name);
-//                intent.putExtra("phNo",phNo);
-//                startActivity(intent);
-//            }
-//        });
-//        newGroup.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent=new Intent(getContext(),addGroup.class);
-//                startActivity(intent);
-//
-//            }
-//        });
+
+        searchView = view.findViewById(R.id.home_search);
+        searchView.setOnQueryTextListener(this);
+
         return view;
     }
 
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return true;
+    }
 
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        Toast.makeText(getContext(), "*" + newText, Toast.LENGTH_SHORT).show();
+        adapter.filter(newText);
+        return true;
+    }
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+//        binding = null;
+    }
 //
 }

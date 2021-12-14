@@ -16,12 +16,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProfileRVAdapter extends RecyclerView.Adapter<ProfileRVAdapter.profileViewHolder> {
+public class ProfileRVAdapter extends RecyclerView.Adapter<ProfileRVAdapter.profileViewHolder> implements Filterable{
     List<Profile> ls;
+    ArrayList<Profile> lsCopy;
     Context c;
     public ProfileRVAdapter(List<Profile> ls, Context c){
         this.c=c;
         this.ls=ls;
+        this.lsCopy = new ArrayList<Profile>();
+        this.lsCopy.addAll(ls);
     }
     @NonNull
     @Override
@@ -43,6 +46,26 @@ public class ProfileRVAdapter extends RecyclerView.Adapter<ProfileRVAdapter.prof
     @Override
     public int getItemCount() {
         return ls.size();
+    }
+
+    @Override
+    public Filter getFilter() {
+        return null;
+    }
+
+    public void filter(String text) {
+        ls.clear();
+        if(text.isEmpty()){
+            ls.addAll(lsCopy);
+        } else{
+            text = text.toLowerCase();
+            for(Profile item: lsCopy){
+                if(item.name.toLowerCase().contains(text) || item.address.toLowerCase().contains(text)){
+                    ls.add(item);
+                }
+            }
+        }
+        notifyDataSetChanged();
     }
 
     public class profileViewHolder extends RecyclerView.ViewHolder {
