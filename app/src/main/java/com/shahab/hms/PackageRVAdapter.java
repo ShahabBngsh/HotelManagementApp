@@ -41,30 +41,31 @@ public class PackageRVAdapter extends RecyclerView.Adapter<PackageRVAdapter.myVi
         holder.room_price.setText(ls.get(position).getPrice());
         holder.room_desc.setText(ls.get(position).getDesc());
 
-        rowClickListeners(holder, ls.get(position).getId());
+        rowClickListeners(holder, ls.get(position).getId(), ls.get(position).getPrice());
 
     }
 
-    private void rowClickListeners(myViewHolder holder, String id) {
+    private void rowClickListeners(myViewHolder holder, String id, String price) {
         holder.room_id.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                launchConfirmBookingActicity(id);
+                launchConfirmBookingActicity(id, price);
             }
         });
         holder.room_desc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                launchConfirmBookingActicity(id);
+                launchConfirmBookingActicity(id, price);
             }
         });
     }
 
-    private void launchConfirmBookingActicity(String id) {
+    private void launchConfirmBookingActicity(String id, String price) {
         Intent intent = new Intent(c, ConfirmBookingActivity.class);
         Bundle extras = new Bundle();
         extras.putString("packageId", id);
         extras.putString("roomId", roomId);
+        extras.putString("packagePrice", price);
         intent.putExtras(extras);
         c.startActivity(intent);
     }
