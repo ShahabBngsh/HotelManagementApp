@@ -1,8 +1,11 @@
 package com.shahab.hms;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
@@ -18,10 +21,16 @@ import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.shahab.hms.databinding.FragmentCustomerDetailsBinding;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -31,7 +40,7 @@ import java.util.List;
 public class CustomerDetailsFragment extends Fragment implements SearchView.OnQueryTextListener{
     RecyclerView rv;
     List<Profile> ls;
-    ProfileRVAdapter adapter;
+    ProfileRVAdapter adapter, adapter_arrlist;
     SearchView searchView;
     ArrayList<Profile> arrayList = new ArrayList<>();
     // TODO: Rename parameter arguments, choose names that match
@@ -97,30 +106,86 @@ public class CustomerDetailsFragment extends Fragment implements SearchView.OnQu
 //        newContact=view.findViewById(R.id.contacts_newContact);
 //        newGroup=view.findViewById(R.id.contacts_newGroup);
         ls = new ArrayList<>();
-        ls.add(new Profile("Usama", "c@a.com", "03017654321", "F10/2 street 13", "my bio"));
-        ls.add(new Profile("Piyush", "d@a.com", "03012143657", "I11/2 street 10", "None"));
-        ls.add(new Profile("Zain", "e@a.com", "03013216541", "G7/3 street 19", "htis is a bio"));
+//        ls.add(new Profile("Usama", "c@a.com", "03017654321", "F10/2 street 13", "my bio"));
+//        ls.add(new Profile("Piyush", "d@a.com", "03012143657", "I11/2 street 10", "None"));
+//        ls.add(new Profile("Zain", "e@a.com", "03013216541", "G7/3 street 19", "htis is a bio"));
         ls.add(new Profile("Zohair", "f@a.com", "03014321765", "F11/2 street 69", "another random bio"));
         ls.add(new Profile("Saad", "g@a.com", "03011243563", "F6/1 street 5", ""));
-        arrayList.addAll(ls);
-//        contactsContactsList.add(new contactsSingleContact("Friend1","11111111111"));
-//        contactsContactsList.add(new contactsSingleContact("Friend1","11111111111"));
-//        contactsContactsList.add(new contactsSingleContact("Friend1","11111111111"));
-//        contactsContactsList.add(new contactsSingleContact("Friend1","11111111111"));
-//        contactsContactsList.add(new contactsSingleContact("Friend1","11111111111"));
-//        contactsContactsList.add(new contactsSingleContact("Friend1","11111111111"));
-//        contactsContactsList.add(new contactsSingleContact("Friend1","11111111111"));
-//        contactsContactsList.add(new contactsSingleContact("Friend1","11111111111"));
-//        contactsContactsList.add(new contactsSingleContact("Friend1","11111111111"));
+        getUsersFromFirebase();
         adapter = new ProfileRVAdapter(arrayList, getContext());
+//        adapter_ls.wait(50);
+        arrayList.addAll(ls);
         RecyclerView.LayoutManager lm = new LinearLayoutManager(getContext());
         rv.setLayoutManager(lm);
         rv.setAdapter(adapter);
+
 
         searchView = view.findViewById(R.id.home_search);
         searchView.setOnQueryTextListener(this);
 
         return view;
+    }
+
+    private void getUsersFromFirebase() {
+
+        CountDownLatch done = new CountDownLatch(10);
+
+        SharedPreferences sharedPref = getActivity().getSharedPreferences("app_values", Context.MODE_PRIVATE);
+        String USER_ID = sharedPref.getString("userid", "none");
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference ref = database.getReference("users/");
+
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot data:snapshot.getChildren()){
+                    String user_id = data.getKey();
+
+                    FirebaseDatabase ddataSnapshotatabase2 = FirebaseDatabase.getInstance();
+                    DatabaseReference profile_name = ddataSnapshotatabase2.getReference("users/" + user_id + "/Profile");
+
+                    profile_name.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @RequiresApi(api = Build.VERSION_CODES.O)
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            String user_name = snapshot.child("name").getValue().toString();
+                            String user_email = snapshot.child("email").getValue().toString();
+                            String user_address = snapshot.child("address").getValue().toString();
+                            String user_contactno = snapshot.child("contactno").getValue().toString();
+                            String user_bio = snapshot.child("bio").getValue().toString();
+//                            Toast.makeText(getContext(), user_name, Toast.LENGTH_SHORT).show();
+
+
+//                            boolean isOnline = false;
+//                            if (onlineStatus.equals("online")) {
+//                                isOnline = true;
+//                            }
+                            ls.add(new Profile(user_name,user_email, user_address, user_contactno, user_bio));
+                            arrayList.add(new Profile(user_name,user_email, user_address, user_contactno, user_bio));
+                            adapter.notifyDataSetChanged();
+                        }
+
+                        @Override
+
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        done.countDown();
+
     }
 
     @Override
