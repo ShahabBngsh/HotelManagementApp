@@ -18,33 +18,55 @@
         android:layout_marginHorizontal="30dp"
         android:layout_marginTop="20dp"
 
+        android:layout_gravity="center"
+
         android:text="Cancel Booking"
-        android:textSize="20dp"
+        android:textSize="30dp"
         android:textColor="@color/white"
         />
 
-    <TextView
+    <EditText
+        android:id="@+id/cancel_room_id"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
         android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
 
 
-        android:text="List of Bookings by Customer"
+        android:hint="Enter Room ID Here"
+        android:textColorHint="@color/white"
         android:textSize="20dp"
         android:textColor="@color/white"
         />
 
-    <TextView
+    <EditText
+        android:id="@+id/cancel_package_id"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
         android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
 
-        android:text="Insert Recycler View Here"
+        android:hint="Enter Package ID Here"
+        android:textColorHint="@color/white"
+
         android:textColor="@color/white"
+        android:textSize="20dp"
+        />
+
+    <Button
+        android:id="@+id/cancel_button"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_gravity="center"
+        android:layout_marginTop="80dp"
+
+        android:text="Submit"
         />
 
 <!--    <TextView-->

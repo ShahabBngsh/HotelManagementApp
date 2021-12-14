@@ -10,7 +10,7 @@
     <item
         android:id="@+id/navigation_cancel_booking"
         android:icon="@drawable/ic_baseline_no_meeting_room_24"
-        android:title="Cancel Booking" />
+        android:title="Checkout" />
 
 
 </menu>

@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -62,6 +63,10 @@ public class ConfirmBookingActivity extends AppCompatActivity {
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                 DatabaseReference invoice_ref = database.getReference("/Invoice");
                 invoice_ref.push().setValue(new Invoice(roomId, packageId, userid, roomPrice + packagePrice, 0, 0));
+
+                Intent intent = new Intent(ConfirmBookingActivity.this, CustomerNavigationActivity.class);
+                startActivity(intent);
+
             }
         });
 
