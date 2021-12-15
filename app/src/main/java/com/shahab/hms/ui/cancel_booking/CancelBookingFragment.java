@@ -62,7 +62,8 @@ public class CancelBookingFragment extends Fragment {
                             String customerId = data.child("customerId").getValue().toString();
                             String roomId = data.child("roomId").getValue().toString();
 
-                            if (packageId.equals(package_id.getText()) & roomId.equals(room_id.getText()) & customerId.equals(userid)) {
+
+                            if (packageId.equals(package_id.getText().toString()) && roomId.equals(room_id.getText().toString()) && customerId.equals(userid)) {
                                 DatabaseReference checkout_ref = database.getReference("/Invoice/" + data.getKey() + "/checkoutStatus");
                                 checkout_ref.setValue("1");
 
