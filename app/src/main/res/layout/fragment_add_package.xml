@@ -1,68 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".addPackageFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+
     <LinearLayout
         android:layout_marginBottom="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:weightSum="8"
+        android:weightSum="10"
         android:orientation="vertical"
-        android:background="@color/black">
+        android:background="@drawable/other_background">
         <TextView
             android:id="@+id/addPackage_Title"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="4"
+            android:layout_weight="5"
             android:text="Add Package"
             android:textSize="30dp"
             android:gravity="center"
             android:textColor="@color/white">
-
         </TextView>
-        <EditText
-            android:id="@+id/addPackage_Id"
-            android:layout_margin="20dp"
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:hint="Enter Package Id"
-            android:textColorHint="@color/white"
-            android:textColor="@color/white">
-        </EditText>
-        <EditText
-            android:id="@+id/addPackage_Price"
-            android:layout_margin="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:hint="Enter Package Price"
-            android:textColorHint="@color/white"
-            android:textColor="@color/white">
-        </EditText>
-        <EditText
-            android:id="@+id/addPackage_Description"
-            android:layout_margin="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:hint="Enter Package Description"
-            android:textColorHint="@color/white"
-            android:textColor="@color/white">
-        </EditText>
-        <Button
-            android:id="@+id/addPackage_addPackage"
-            android:layout_margin="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text="Add Package"
-            android:textColor="@color/white">
-        </Button>
+            android:layout_marginTop="50dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:background="@drawable/card"
+            >
+            <EditText
+                android:id="@+id/addPackage_Id"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:paddingLeft="10dp"
+                android:layout_alignParentTop="true"
+                android:hint="Enter Package Id"
+                android:background="@drawable/grey_rounded"
+                android:textColorHint="@color/white"
+                android:textColor="@color/black">
+            </EditText>
+
+            <EditText
+                android:id="@+id/addPackage_Price"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:paddingLeft="10dp"
+                android:layout_below="@id/addPackage_Id"
+                android:background="@drawable/grey_rounded"
+                android:hint="Enter Package Price"
+                android:layout_marginTop="10dp"
+                android:textColorHint="@color/white"
+                android:textColor="@color/white">
+            </EditText>
+            <EditText
+                android:id="@+id/addPackage_Description"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:paddingLeft="10dp"
+                android:background="@drawable/grey_rounded"
+                android:layout_below="@id/addPackage_Price"
+                android:layout_marginTop="10dp"
+                android:hint="Enter Package Description"
+                android:textColorHint="@color/white"
+                android:textColor="@color/black">
+            </EditText>
+            <Button
+                android:id="@+id/addPackage_addPackage"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/grey_rounded"
+                android:layout_below="@id/addPackage_Description"
+                android:text="Add Package"
+                android:textColor="@color/black">
+            </Button>
+
+        </RelativeLayout>
+
     </LinearLayout>
 
 </FrameLayout>
