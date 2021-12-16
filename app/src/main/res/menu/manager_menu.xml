@@ -16,5 +16,8 @@
         android:id="@+id/customerDetail"
         android:title="Customer Detail"
         android:icon="@drawable/ic_baseline_person_search_24"/>
-
+    <item
+        android:id="@+id/payments"
+        android:title="Payment"
+        android:icon="@drawable/payment"/>
 </menu>

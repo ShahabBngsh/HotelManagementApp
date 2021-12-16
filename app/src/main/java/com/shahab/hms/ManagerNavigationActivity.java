@@ -39,6 +39,9 @@ public class ManagerNavigationActivity extends AppCompatActivity {
                 case R.id.customerDetail:
                     appFragment=new CustomerDetailsFragment();
                     break;
+                case R.id.payments:
+                    appFragment=new PaymentFragment();
+                    break;
             }
             getSupportFragmentManager().beginTransaction().replace(R.id.container,appFragment).commit();
             return true;
