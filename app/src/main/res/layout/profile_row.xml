@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/profile_row_portrait"
             android:layout_margin="10dp"
-            android:textSize="22dp"
+            android:textSize="20dp"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
             android:hint="John Doe"/>
@@ -43,7 +43,7 @@
             android:layout_alignLeft="@+id/profile_row_name"
             android:textColorHint="@color/white"
             android:textColor="@color/white"
-            android:textSize="20dp"
+            android:textSize="16dp"
             android:hint="email@email.com"
             />
 
@@ -55,7 +55,7 @@
             android:layout_alignLeft="@+id/profile_row_name"
             android:textColorHint="@color/white"
             android:textColor="@color/white"
-            android:textSize="20dp"
+            android:textSize="16dp"
             android:hint="03011234567"
             />
         <TextView
@@ -66,7 +66,7 @@
             android:layout_alignLeft="@+id/profile_row_name"
             android:textColorHint="@color/white"
             android:textColor="@color/white"
-            android:textSize="20dp"
+            android:textSize="16dp"
             android:hint="F11/2 street 69"
             />
         <TextView
@@ -77,9 +77,42 @@
             android:layout_alignLeft="@+id/profile_row_name"
             android:textColorHint="@color/white"
             android:textColor="@color/white"
-            android:textSize="20dp"
+            android:textSize="12dp"
             android:hint="This is just random bio"
             />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10sp"
+            android:background="@color/purple_500"
+            android:padding="10sp"
+            >
+            <TextView
+                android:id="@+id/profile_row_duetext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/white"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:hint="Due Payments"
+                />
+            <TextView
+                android:id="@+id/profile_row_due_payment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/profile_row_duetext"
+                android:textColorHint="#FFFFFF"
+                android:textColor="#FF0000"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:hint="None"
+                />
+
+        </RelativeLayout>
+
         <View
             android:layout_margin="5dp"
             android:layout_width="match_parent"

@@ -46,9 +46,9 @@ public class ManagerNavigationActivity extends AppCompatActivity {
 //                case R.id.duePayment:
 //                    appFragment=new DuePaymentFragment();
 //                    break;
-                case R.id.payments:
-                    appFragment=new PaymentFragment();
-                    break;
+//                case R.id.payments:
+//                    appFragment=new PaymentFragment();
+//                    break;
 //                case R.id.checkout:
 //                    appFragment=new CheckoutFragment();
 //                    break;
