@@ -21,6 +21,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
     EditText login_email;
@@ -29,6 +30,10 @@ public class MainActivity extends AppCompatActivity {
     TextView txtView_signup;
 
     private FirebaseAuth mAuth;
+
+    static {
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +51,30 @@ public class MainActivity extends AppCompatActivity {
 
         login_email = findViewById(R.id.login_email_edittext);
         login_password = findViewById(R.id.login_password_edittext);
+
+        try {
+            SharedPreferences sharedPref = getSharedPreferences("app_values", Context.MODE_PRIVATE);
+            String user_session = sharedPref.getString("userid", null);
+
+            if (user_session != null && !user_session.isEmpty()) {
+                if(user_session.equals("cIhWgHHzTzPSIwhKPFDQLWmzNzy1")){
+                    Intent navigationIntent = new Intent(MainActivity.this, ManagerNavigationActivity.class);
+                    startActivity(navigationIntent);
+                }
+
+                else {
+                    Intent navigationIntent = new Intent(MainActivity.this, CustomerNavigationActivity.class);
+                    startActivity(navigationIntent);
+                }
+            }
+
+
+
+        }
+
+        catch (Exception e) {
+
+        }
 
     }
 

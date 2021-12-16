@@ -12,5 +12,10 @@
         android:icon="@drawable/ic_baseline_no_meeting_room_24"
         android:title="Checkout" />
 
+    <item
+        android:id="@+id/navigation_search_package"
+        android:icon="@drawable/ic_baseline_power_settings_new_24"
+        android:title="Log out"/>
+
 
 </menu>
