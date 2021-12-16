@@ -77,7 +77,7 @@
                 android:background="@drawable/grey_rounded"
                 android:layout_below="@id/addPackage_Description"
                 android:text="Add Package"
-                android:textColor="@color/black">
+                android:textColor="@color/white">
             </Button>
 
         </RelativeLayout>

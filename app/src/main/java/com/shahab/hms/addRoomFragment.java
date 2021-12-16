@@ -102,34 +102,36 @@ public class addRoomFragment extends Fragment {
         addRoom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.wtf("Debug", "onCreate() called");
+                if (roomId.getText().toString().matches("") || price.getText().toString().matches("") || selectedImage == null) {
+                    Toast.makeText(getActivity(), "Fill the input fields and select an Image", Toast.LENGTH_SHORT).show();
+                } else {
+                    Log.wtf("Debug", "onCreate() called");
 //                Toast.makeText(getActivity(),"In here",Toast.LENGTH_SHORT).show();
 
-                if(selectedImage!=null){
-//                    Toast.makeText(getActivity(),selectedImage.toString(),Toast.LENGTH_SHORT).show();
+                    if (selectedImage != null) {
 
-                    StorageReference storageReference= FirebaseStorage.getInstance().getReference();
+                        StorageReference storageReference = FirebaseStorage.getInstance().getReference();
 //                    Toast.makeText(getActivity(),storageReference.toString(),Toast.LENGTH_SHORT).show();
 
-                    storageReference=storageReference.child("Room_pic/"+roomId.getText().toString()+new Date().getTime() +".jpg");
-                    storageReference.putFile(selectedImage)
-                            .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                                @Override
-                                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                    Task<Uri> task=taskSnapshot.getStorage().getDownloadUrl();
-                                    task.addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                        @Override
-                                        public void onSuccess(Uri uri) {
-                                            String createProfile_dp=uri.toString();
-                                            storeRoomReference.push().setValue(
-                                                    new room(
-                                                            roomId.getText().toString(),
-                                                            desc.getText().toString(),
-                                                            createProfile_dp,
-                                                            price.getText().toString())
-                                            );
-                                            Toast.makeText(getActivity(),"New Room Added", Toast.LENGTH_SHORT).show();
-                                            Log.wtf("Debug", "onCreate() called");
+                        storageReference = storageReference.child("Room_pic/" + roomId.getText().toString() + new Date().getTime() + ".jpg");
+                        storageReference.putFile(selectedImage)
+                                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                    @Override
+                                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                        Task<Uri> task = taskSnapshot.getStorage().getDownloadUrl();
+                                        task.addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                            @Override
+                                            public void onSuccess(Uri uri) {
+                                                String createProfile_dp = uri.toString();
+                                                storeRoomReference.push().setValue(
+                                                        new room(
+                                                                roomId.getText().toString(),
+                                                                desc.getText().toString(),
+                                                                createProfile_dp,
+                                                                price.getText().toString())
+                                                );
+                                                Toast.makeText(getActivity(), "New Room Added", Toast.LENGTH_SHORT).show();
+                                                Log.wtf("Debug", "onCreate() called");
 //                                            Toast.makeText(createProfile.this,"Here",Toast.LENGTH_SHORT).show();
 //                                            Intent intent=new Intent(createProfile.this,MainActivity.class);
 //                                            intent.putExtra("name",firstName.getText().toString()+"  "+lastName.getText().toString());
@@ -137,38 +139,36 @@ public class addRoomFragment extends Fragment {
 //                                            startActivity(intent);
 //                                            finish();
 
-                                        }
-                                    })
-                                            .addOnFailureListener(new OnFailureListener() {
-                                                @Override
-                                                public void onFailure(@NonNull Exception e) {
-                                                    Log.wtf("Debug", "task on failure called");
+                                            }
+                                        })
+                                                .addOnFailureListener(new OnFailureListener() {
+                                                    @Override
+                                                    public void onFailure(@NonNull Exception e) {
+                                                        Log.wtf("Debug", "task on failure called");
 //                                                    Toast.makeText(
 //                                                            createProfile.this,
 //                                                            "Failed to upload image and data",
 //                                                            Toast.LENGTH_LONG).show();
 
-                                                }
-                                            });
-                                }
-                            })
-                            .addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(
-                                            getActivity(),
-                                            "Picture uploading failed",
-                                            Toast.LENGTH_LONG).show();
+                                                    }
+                                                });
+                                    }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Toast.makeText(
+                                                getActivity(),
+                                                "Picture uploading failed",
+                                                Toast.LENGTH_LONG).show();
 
-                                }
-                            });
+                                    }
+                                });
+                        Toast.makeText(getActivity(), "Adding new room...", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getActivity(), ManagerNavigationActivity.class);
+                        startActivity(intent);
 
-                }
-                else{
-//                    Toast.makeText(
-//                            createProfile.this,
-//                            "Select Display Picture",
-//                            Toast.LENGTH_LONG).show();
+                    }
                 }
 
             }

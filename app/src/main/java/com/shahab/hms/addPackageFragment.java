@@ -1,5 +1,6 @@
 package com.shahab.hms;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -77,15 +78,21 @@ public class addPackageFragment extends Fragment {
         addPackage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                database= FirebaseDatabase.getInstance();
-                storePackageReference=database.getReference("Package");
-                storePackageReference.push().setValue(
-                        new Package(
-                            packageId.getText().toString(),
-                            desc.getText().toString(),
-                            price.getText().toString())
-                );
-                Toast.makeText(getActivity(),"New Package Added", Toast.LENGTH_SHORT).show();
+                if (packageId.getText().toString().matches("") || price.getText().toString().matches("")) {
+                    Toast.makeText(getActivity(), "Fill the input fields", Toast.LENGTH_SHORT).show();
+                } else {
+                    database = FirebaseDatabase.getInstance();
+                    storePackageReference = database.getReference("Package");
+                    storePackageReference.push().setValue(
+                            new Package(
+                                    packageId.getText().toString(),
+                                    desc.getText().toString(),
+                                    price.getText().toString())
+                    );
+                    Toast.makeText(getActivity(), "New Package Added", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getActivity(), ManagerNavigationActivity.class);
+                    startActivity(intent);
+                }
             }
         });
         return view;
