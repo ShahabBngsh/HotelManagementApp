@@ -11,6 +11,12 @@
         android:label="Room"
         tools:layout="@layout/fragment_search_room" />
 
+    <fragment
+        android:id="@+id/navigation_search_package"
+        android:name="com.shahab.hms.ui.search_package.SearchPackageFragment"
+        android:label="Search Package"
+        tools:layout="@layout/fragment_search_room" />
+
 
     <fragment
         android:id="@+id/navigation_cancel_booking"
