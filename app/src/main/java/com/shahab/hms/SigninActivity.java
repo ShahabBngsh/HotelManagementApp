@@ -70,7 +70,7 @@ public class SigninActivity extends AppCompatActivity {
 
                                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                                 DatabaseReference myRef = database.getReference("users/" + userid + "/Profile");
-                                Profile userProfile = new Profile("Name", email, "03011234567", "F11/2 street 69", "my bio"); //name email phone address bio
+                                Profile userProfile = new Profile(userid, "Name", email, "03010000000", "A/0 street 00", "lorem ipsum", -1L); //name email phone address bio
                                 myRef.setValue(userProfile);
                                 //----------------------------------
 

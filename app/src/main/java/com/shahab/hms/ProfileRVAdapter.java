@@ -41,6 +41,7 @@ public class ProfileRVAdapter extends RecyclerView.Adapter<ProfileRVAdapter.prof
         Holder.contactno.setText(ls.get(i).getContactno());
         Holder.address.setText(ls.get(i).getAddress());
         Holder.bio.setText(ls.get(i).getBio());
+        Holder.dues.setText(Long.toString(ls.get(i).getDues()));
     }
 
     @Override
@@ -72,7 +73,7 @@ public class ProfileRVAdapter extends RecyclerView.Adapter<ProfileRVAdapter.prof
     }
 
     public class profileViewHolder extends RecyclerView.ViewHolder {
-        TextView name,email, contactno, address, bio;
+        TextView name,email, contactno, address, bio, dues;
         public profileViewHolder(@NonNull View itemView) {
             super(itemView);
             name=itemView.findViewById(R.id.profile_row_name);
@@ -80,6 +81,7 @@ public class ProfileRVAdapter extends RecyclerView.Adapter<ProfileRVAdapter.prof
             contactno=itemView.findViewById(R.id.profile_row_phone);
             address=itemView.findViewById(R.id.profile_row_address);
             bio=itemView.findViewById(R.id.profile_row_bio);
+            dues = itemView.findViewById(R.id.profile_row_due_payment);
         }
     }
 }

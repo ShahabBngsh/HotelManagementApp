@@ -31,6 +31,7 @@ import com.shahab.hms.databinding.FragmentCustomerDetailsBinding;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
+import java.util.stream.Collectors;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -109,8 +110,8 @@ public class CustomerDetailsFragment extends Fragment implements SearchView.OnQu
 //        ls.add(new Profile("Usama", "c@a.com", "03017654321", "F10/2 street 13", "my bio"));
 //        ls.add(new Profile("Piyush", "d@a.com", "03012143657", "I11/2 street 10", "None"));
 //        ls.add(new Profile("Zain", "e@a.com", "03013216541", "G7/3 street 19", "htis is a bio"));
-        ls.add(new Profile("Zohair", "f@a.com", "03014321765", "F11/2 street 69", "another random bio"));
-        ls.add(new Profile("Saad", "g@a.com", "03011243563", "F6/1 street 5", ""));
+        ls.add(new Profile("None", "Zohair", "f@a.com", "03014321765", "F11/2 street 69", "another random bio", 0L));
+        ls.add(new Profile("None", "Saad", "g@a.com", "03011243563", "F6/1 street 5", "", 5000L));
         getUsersFromFirebase();
         adapter = new ProfileRVAdapter(ls, getContext());
 //        adapter_ls.wait(50);
@@ -136,6 +137,8 @@ public class CustomerDetailsFragment extends Fragment implements SearchView.OnQu
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference("users/");
 
+
+
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override
@@ -155,16 +158,54 @@ public class CustomerDetailsFragment extends Fragment implements SearchView.OnQu
                             String user_address = snapshot.child("address").getValue().toString();
                             String user_contactno = snapshot.child("contactno").getValue().toString();
                             String user_bio = snapshot.child("bio").getValue().toString();
-//                            Toast.makeText(getContext(), user_name, Toast.LENGTH_SHORT).show();
+
+                            Profile curr_profile = new Profile(user_id, user_name, user_email, user_address, user_contactno, user_bio, 0L);
+
+                            DatabaseReference invoice_ref = database.getReference("Invoice/");
+                            invoice_ref.addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot invoice_snapshot) {
+                                    for (DataSnapshot invoice_data:invoice_snapshot.getChildren()) {
+                                        String invoice_id = invoice_data.getKey();
+
+                                        FirebaseDatabase firebase_db_instance = FirebaseDatabase.getInstance();
+                                        DatabaseReference invoice_id_ref = firebase_db_instance.getReference("Invoice/" + invoice_id);
+
+                                        invoice_id_ref.addValueEventListener(new ValueEventListener() {
+                                            @RequiresApi(api = Build.VERSION_CODES.N)
+                                            @Override
+                                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                Long user_dues = (Long)invoice_data.child("duePayment").getValue();
+                                                Long user_paid = (Long)invoice_data.child("paidAmount").getValue();
+                                                if (curr_profile.id.equals(snapshot.child("customerId").getValue().toString())) {
+                                                    if (user_dues > user_paid) {
+//                                                        Toast.makeText(getContext(), String.valueOf(user_dues) + " " + user_name, Toast.LENGTH_SHORT).show();
+                                                        curr_profile.setDues(curr_profile.getDues()+user_dues);
+                                                        if (!ls.contains(curr_profile)) {
+                                                            ls.add(curr_profile);
+                                                            arrayList.add(curr_profile);
+                                                            adapter.notifyDataSetChanged();
+                                                        }
+                                                    }
+                                                }
+                                            }
+
+                                            @Override
+                                            public void onCancelled(@NonNull DatabaseError error) {
+
+                                            }
+                                        });
+                                    }
+
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
 
 
-//                            boolean isOnline = false;
-//                            if (onlineStatus.equals("online")) {
-//                                isOnline = true;
-//                            }
-                            ls.add(new Profile(user_name,user_email, user_address, user_contactno, user_bio));
-                            arrayList.add(new Profile(user_name,user_email, user_address, user_contactno, user_bio));
-                            adapter.notifyDataSetChanged();
                         }
 
                         @Override
@@ -175,6 +216,8 @@ public class CustomerDetailsFragment extends Fragment implements SearchView.OnQu
                     });
 
 
+
+
                 }
             }
 
@@ -183,7 +226,6 @@ public class CustomerDetailsFragment extends Fragment implements SearchView.OnQu
 
             }
         });
-
         done.countDown();
 
     }

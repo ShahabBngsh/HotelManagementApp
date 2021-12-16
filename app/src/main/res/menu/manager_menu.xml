@@ -24,10 +24,10 @@
 <!--        android:id="@+id/duePayment"-->
 <!--        android:title="Due Payment"-->
 <!--        android:icon="@drawable/payment"/>-->
-    <item
-        android:id="@+id/payments"
-        android:title="Payment"
-        android:icon="@drawable/payment"/>
+<!--    <item-->
+<!--        android:id="@+id/payments"-->
+<!--        android:title="Payment"-->
+<!--        android:icon="@drawable/payment"/>-->
 <!--    <item-->
 <!--        android:id="@+id/checkout"-->
 <!--        android:title=""-->
