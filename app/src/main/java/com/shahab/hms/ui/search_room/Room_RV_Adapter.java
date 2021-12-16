@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.shahab.hms.R;
 import com.shahab.hms.SearchPackageActivity;
 import com.shahab.hms.room;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -40,6 +41,7 @@ public class Room_RV_Adapter extends RecyclerView.Adapter<Room_RV_Adapter.myView
         holder.room_price.setText(ls.get(position).getPrice());
         holder.room_desc.setText(ls.get(position).getDesc());
 //        holder.room_pic.setImageResource(ls.get(position).getPic());
+        Picasso.get().load(ls.get(position).getPic()).resize(100,100).into(holder.room_pic);
 
         rowClickListeners(holder, ls.get(position).getRoomId());
 
@@ -81,6 +83,7 @@ public class Room_RV_Adapter extends RecyclerView.Adapter<Room_RV_Adapter.myView
             room_id = itemView.findViewById(R.id.search_room_id);
             room_desc = itemView.findViewById(R.id.search_room_desc);
             room_price = itemView.findViewById(R.id.search_room_price);
+            room_pic = itemView.findViewById(R.id.search_room_pic);
         }
 
     }
