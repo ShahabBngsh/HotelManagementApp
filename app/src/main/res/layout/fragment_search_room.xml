@@ -27,7 +27,7 @@
         android:layout_marginHorizontal="30dp"
         android:iconifiedByDefault="false"
         android:layout_marginTop="20dp"
-        android:background="@color/white"
+        android:background="@color/gray"
         />
 
     <androidx.recyclerview.widget.RecyclerView

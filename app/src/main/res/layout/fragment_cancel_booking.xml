@@ -1,73 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.cancel_booking.CancelBookingFragment"
     android:orientation="vertical"
-    android:paddingTop="80dp"
-    android:background="@color/black"
+    android:background="@drawable/other_background"
     >
 
 
-    <TextView
-        android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="20dp"
+
+            android:layout_centerHorizontal="true"
+
+            android:text="Cancel Booking"
+            android:textSize="30dp"
+            android:textColor="@color/white"
+            />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="180dp"
+        android:layout_marginHorizontal="20dp"
         android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_below="@id/heading"
+        android:background="@drawable/card"
+        >
+        <EditText
+            android:id="@+id/cancel_room_id"
+            android:background="@drawable/grey_rounded"
 
-        android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:paddingLeft="10dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="20dp"
+            android:inputType="number"
 
-        android:layout_gravity="center"
+            android:hint="Enter Room ID Here"
+            android:textColorHint="@color/white"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            />
 
-        android:text="Cancel Booking"
-        android:textSize="30dp"
-        android:textColor="@color/white"
-        />
+        <EditText
+            android:id="@+id/cancel_package_id"
+            android:background="@drawable/grey_rounded"
+            android:inputType="number"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:paddingLeft="10dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="10dp"
 
-    <EditText
-        android:id="@+id/cancel_room_id"
+            android:hint="Enter Package ID Here"
+            android:textColorHint="@color/white"
 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="20dp"
 
-        android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="40dp"
+            android:layout_below="@id/cancel_room_id"
+            />
 
+        <Button
+            android:id="@+id/cancel_button"
+            android:layout_below="@id/cancel_package_id"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
 
-        android:hint="Enter Room ID Here"
-        android:textColorHint="@color/white"
-        android:textSize="20dp"
-        android:textColor="@color/white"
-        />
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
 
-    <EditText
-        android:id="@+id/cancel_package_id"
+            android:text="Submit"
+            />
+    </RelativeLayout>
 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="40dp"
-
-        android:hint="Enter Package ID Here"
-        android:textColorHint="@color/white"
-
-        android:textColor="@color/white"
-        android:textSize="20dp"
-        />
-
-    <Button
-        android:id="@+id/cancel_button"
-
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_gravity="center"
-        android:layout_marginTop="80dp"
-
-        android:text="Submit"
-        />
 
 <!--    <TextView-->
 <!--        android:id="@+id/text_notifications"-->
@@ -80,4 +96,4 @@
 <!--        android:textSize="20sp"-->
 <!--         />-->
 
-</LinearLayout>
+</RelativeLayout>
