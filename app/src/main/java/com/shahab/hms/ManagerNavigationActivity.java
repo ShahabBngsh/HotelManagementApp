@@ -30,28 +30,15 @@ public class ManagerNavigationActivity extends AppCompatActivity {
                 case R.id.addRoom:
                     appFragment=new addRoomFragment();
                     break;
-
                 case R.id.addPackage:
                     appFragment=new addPackageFragment();
                     break;
                 case R.id.roomUpdate:
                     appFragment=new RoomUpdateFragment();
                     break;
-//                case R.id.packageUpdate:
-//                    appFragment=new PackageUpdateFragment();
-//                    break;
                 case R.id.customerDetail:
                     appFragment=new CustomerDetailsFragment();
                     break;
-//                case R.id.duePayment:
-//                    appFragment=new DuePaymentFragment();
-//                    break;
-//                case R.id.payments:
-//                    appFragment=new PaymentFragment();
-//                    break;
-//                case R.id.checkout:
-//                    appFragment=new CheckoutFragment();
-//                    break;
             }
             getSupportFragmentManager().beginTransaction().replace(R.id.container,appFragment).commit();
             return true;

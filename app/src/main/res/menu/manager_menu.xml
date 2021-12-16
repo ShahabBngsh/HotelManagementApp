@@ -3,34 +3,18 @@
     <item
         android:id="@+id/addRoom"
         android:title="Add Room"
-        android:icon="@drawable/payment"/>
+        android:icon="@drawable/ic_baseline_add_room_24_white"/>
     <item
         android:id="@+id/addPackage"
         android:title="add Package"
-        android:icon="@drawable/payment"/>
+        android:icon="@drawable/ic_baseline_add_package_24"/>
     <item
         android:id="@+id/roomUpdate"
         android:title="Update Room"
-        android:icon="@drawable/payment"/>
-<!--    <item-->
-<!--        android:id="@+id/packageUpdate"-->
-<!--        android:title="Update Package"-->
-<!--        android:icon="@drawable/payment"/>-->
+        android:icon="@drawable/ic_baseline_update_room_24"/>
     <item
         android:id="@+id/customerDetail"
         android:title="Customer Detail"
-        android:icon="@drawable/payment"/>
-<!--    <item-->
-<!--        android:id="@+id/duePayment"-->
-<!--        android:title="Due Payment"-->
-<!--        android:icon="@drawable/payment"/>-->
-<!--    <item-->
-<!--        android:id="@+id/payments"-->
-<!--        android:title="Payment"-->
-<!--        android:icon="@drawable/payment"/>-->
-<!--    <item-->
-<!--        android:id="@+id/checkout"-->
-<!--        android:title=""-->
-<!--        android:icon="@drawable/payment"/>-->
+        android:icon="@drawable/ic_baseline_person_search_24"/>
 
 </menu>

@@ -71,11 +71,11 @@ public class MainActivity extends AppCompatActivity {
                                 editor.apply();
 
                                 if(user != null && user.getUid().equals("cIhWgHHzTzPSIwhKPFDQLWmzNzy1")){
-                                    Toast.makeText(MainActivity.this, "i'm da MANAGA", Toast.LENGTH_SHORT).show();
+//                                    Toast.makeText(MainActivity.this, "i'm da MANAGA", Toast.LENGTH_SHORT).show();
                                     Intent navigationIntent = new Intent(MainActivity.this, ManagerNavigationActivity.class);
                                     startActivity(navigationIntent);
                                 } else if( user != null && !user.getUid().equals("cIhWgHHzTzPSIwhKPFDQLWmzNzy1")) {
-                                    Toast.makeText(MainActivity.this, "the customa is always right", Toast.LENGTH_SHORT).show();
+//                                    Toast.makeText(MainActivity.this, "the customa is always right", Toast.LENGTH_SHORT).show();
                                     Intent navigationIntent = new Intent(MainActivity.this, CustomerNavigationActivity.class);
                                     startActivity(navigationIntent);
                                 }
@@ -103,9 +103,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        Toast.makeText(this, "the customa is always right", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "the customa is always right", Toast.LENGTH_SHORT).show();
         if(currentUser != null && currentUser.getUid().equals("cIhWgHHzTzPSIwhKPFDQLWmzNzy1")){
-            Toast.makeText(this, "i'm da MANAGA", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "i'm da MANAGA", Toast.LENGTH_SHORT).show();
             Intent navigationIntent = new Intent(this, ManagerNavigationActivity.class);
             startActivity(navigationIntent);
         } else if( currentUser != null && !currentUser.getUid().equals("cIhWgHHzTzPSIwhKPFDQLWmzNzy1")) {

@@ -18,7 +18,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:$USER_HOME$/Android/Sdk/icons/material/materialicons/search/baseline_search_24.xml" />
+                                      <entry key="url" value="file:$USER_HOME$/Android/Sdk/icons/material/materialicons/person_search/baseline_person_search_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -29,7 +29,7 @@
                         <option name="values">
                           <map>
                             <entry key="color" value="ffffff" />
-                            <entry key="outputName" value="ic_baseline_search_white" />
+                            <entry key="outputName" value="ic_baseline_person_search_24" />
                             <entry key="sourceFile" value="$USER_HOME$/D:\FAST\Sem 7\SMD\HotelManagementSystem" />
                           </map>
                         </option>
