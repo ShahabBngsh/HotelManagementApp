@@ -42,9 +42,9 @@ import java.util.Date;
  * create an instance of this fragment.
  */
 public class RoomUpdateFragment extends Fragment {
-    Button updatePrice, uploadPic, updatePic;
+    Button updatePrice, updatePic;
     EditText roomId, newPrice;
-    ImageView picture;
+    ImageView picture, uploadPic;
     DatabaseReference showRoomReference;
     FirebaseDatabase database;
     Uri selectedImage=null;
@@ -95,7 +95,7 @@ public class RoomUpdateFragment extends Fragment {
         View view= inflater.inflate(R.layout.fragment_room_update, container, false);
         roomId=view.findViewById(R.id.updateRoom_roomId);
         updatePic=view.findViewById(R.id.updateRoom_UpdatePic);
-        uploadPic=view.findViewById(R.id.updateRoom_uploadPic);
+        uploadPic=view.findViewById(R.id.updateRoom_image);
         newPrice=view.findViewById(R.id.updateRoom_newPrice);
         picture=view.findViewById(R.id.updateRoom_image);
         updatePrice=view.findViewById(R.id.updateRoom_updatePrice);
@@ -149,7 +149,7 @@ public class RoomUpdateFragment extends Fragment {
                                         public void onSuccess(Uri uri) {
                                             String createProfile_dp=uri.toString();
                                             database= FirebaseDatabase.getInstance();
-//        reference=database.getReference("Users/"+currentuser+"/Profile");
+
                                             showRoomReference=database.getReference("Room/");
                                             showRoomReference.addValueEventListener(new ValueEventListener() {
                                                 @Override
