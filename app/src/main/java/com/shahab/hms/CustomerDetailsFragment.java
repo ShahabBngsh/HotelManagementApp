@@ -107,14 +107,9 @@ public class CustomerDetailsFragment extends Fragment implements SearchView.OnQu
 //        newContact=view.findViewById(R.id.contacts_newContact);
 //        newGroup=view.findViewById(R.id.contacts_newGroup);
         ls = new ArrayList<>();
-//        ls.add(new Profile("Usama", "c@a.com", "03017654321", "F10/2 street 13", "my bio"));
-//        ls.add(new Profile("Piyush", "d@a.com", "03012143657", "I11/2 street 10", "None"));
-//        ls.add(new Profile("Zain", "e@a.com", "03013216541", "G7/3 street 19", "htis is a bio"));
-        ls.add(new Profile("None", "Zohair", "f@a.com", "03014321765", "F11/2 street 69", "another random bio", 0L));
-        ls.add(new Profile("None", "Saad", "g@a.com", "03011243563", "F6/1 street 5", "", 5000L));
         getUsersFromFirebase();
         adapter = new ProfileRVAdapter(ls, getContext());
-//        adapter_ls.wait(50);
+
         RecyclerView.LayoutManager lm = new LinearLayoutManager(getContext());
         rv.setLayoutManager(lm);
         rv.setAdapter(adapter);
@@ -122,7 +117,6 @@ public class CustomerDetailsFragment extends Fragment implements SearchView.OnQu
 
         searchView = view.findViewById(R.id.home_search);
         searchView.setOnQueryTextListener(this);
-//        Toast.makeText(getContext(), String.valueOf(arrayList.size()) + " | " + String.valueOf(ls.size()), Toast.LENGTH_SHORT).show();
         arrayList.addAll(ls);
         return view;
     }

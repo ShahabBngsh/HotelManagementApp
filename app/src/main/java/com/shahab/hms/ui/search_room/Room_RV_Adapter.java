@@ -6,26 +6,33 @@ import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.shahab.hms.Profile;
 import com.shahab.hms.R;
 import com.shahab.hms.SearchPackageActivity;
 import com.shahab.hms.room;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class Room_RV_Adapter extends RecyclerView.Adapter<Room_RV_Adapter.myViewHolder> {
+public class Room_RV_Adapter extends RecyclerView.Adapter<Room_RV_Adapter.myViewHolder> implements Filterable{
     List<room> ls;
+    ArrayList<room> lsCopy;
     Context c;
 
     public Room_RV_Adapter(List<room> ls, Context c) {
         this.ls = ls;
         this.c = c;
+        this.lsCopy = new ArrayList<room>();
+        this.lsCopy.addAll(ls);
     }
 
     @NonNull
@@ -86,6 +93,29 @@ public class Room_RV_Adapter extends RecyclerView.Adapter<Room_RV_Adapter.myView
             room_pic = itemView.findViewById(R.id.search_room_pic);
         }
 
+    }
+
+    @Override
+    public Filter getFilter() {
+        return null;
+    }
+
+    public void filter(String text, List<room> oldls) {
+        lsCopy.clear();
+//        Toast.makeText(c, String.valueOf(lsCopy.size()), Toast.LENGTH_SHORT).show();
+        lsCopy.addAll(oldls);
+        ls.clear();
+        if(text.isEmpty()){
+            ls.addAll(lsCopy);
+        } else{
+            text = text.toLowerCase();
+            for(room item: lsCopy){
+                if(String.valueOf(item.getPrice()).contains(text)){
+                    ls.add(item);
+                }
+            }
+        }
+        notifyDataSetChanged();
     }
 
 
