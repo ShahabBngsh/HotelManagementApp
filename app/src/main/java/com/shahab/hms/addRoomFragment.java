@@ -39,10 +39,10 @@ import java.util.Date;
  * create an instance of this fragment.
  */
 public class addRoomFragment extends Fragment {
-    Button uploadPic, addRoom;
+    Button addRoom;
     EditText price, roomId, desc;
     Uri selectedImage=null;
-    ImageView picture;
+    ImageView picture, uploadPic;
     DatabaseReference storeRoomReference;
     FirebaseDatabase database;
     // TODO: Rename parameter arguments, choose names that match
@@ -91,7 +91,7 @@ public class addRoomFragment extends Fragment {
         // Inflate the layout for this fragment
 
         View view=inflater.inflate(R.layout.fragment_add_room, container, false);
-        uploadPic=view.findViewById(R.id.addRoom_UploadPic);
+        uploadPic=view.findViewById(R.id.addRoom_image);
         addRoom=view.findViewById(R.id.addRoom_addRoom);
         price=view.findViewById(R.id.addRoom_Price);
         roomId=view.findViewById(R.id.addRoom_Id);
