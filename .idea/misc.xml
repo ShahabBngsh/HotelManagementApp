@@ -42,11 +42,24 @@
         <entry key="..\:/Users/Arun-PC/Desktop/PersonalFiles/Sem7/SMD/Project/HotelManagementApp/app/src/main/res/menu/manager_menu.xml" value="0.2421875" />
         <entry key="..\:/Users/Arun-PC/Desktop/PersonalFiles/Sem7/SMD/Project/HotelManagementApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.25462962962962965" />
         <entry key="app/src/main/res/drawable/background.xml" value="0.21145833333333333" />
+        <entry key="app/src/main/res/drawable/card.xml" value="0.2109375" />
+        <entry key="app/src/main/res/drawable/card_outline.xml" value="0.2109375" />
+        <entry key="app/src/main/res/drawable/card_purple.xml" value="0.2109375" />
+        <entry key="app/src/main/res/drawable/drawable_purple.xml" value="0.2109375" />
+        <entry key="app/src/main/res/drawable/other_background.xml" value="0.2109375" />
         <entry key="app/src/main/res/drawable/top_bar_edges.xml" value="0.36770833333333336" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_manager_navigation.xml" value="0.19479166666666667" />
         <entry key="app/src/main/res/layout/activity_signin.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_add_package.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_add_room.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_customer_details.xml" value="0.1953125" />
+        <entry key="app/src/main/res/layout/fragment_due_payment.xml" value="0.19479166666666667" />
+        <entry key="app/src/main/res/layout/fragment_package_update.xml" value="0.19479166666666667" />
+        <entry key="app/src/main/res/layout/fragment_payment.xml" value="0.19479166666666667" />
+        <entry key="app/src/main/res/layout/fragment_room_update.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_search_room.xml" value="0.19479166666666667" />
         <entry key="app/src/main/res/layout/profile_row.xml" value="0.33" />
         <entry key="app/src/main/res/menu/manager_menu.xml" value="0.3515625" />
       </map>

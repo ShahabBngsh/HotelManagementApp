@@ -42,9 +42,9 @@ import java.util.Date;
  * create an instance of this fragment.
  */
 public class RoomUpdateFragment extends Fragment {
-    Button updatePrice, uploadPic, updatePic;
+    Button updatePrice, updatePic;
     EditText roomId, newPrice;
-    ImageView picture;
+    ImageView picture, uploadPic;
     DatabaseReference showRoomReference;
     FirebaseDatabase database;
     Uri selectedImage=null;
@@ -95,7 +95,7 @@ public class RoomUpdateFragment extends Fragment {
         View view= inflater.inflate(R.layout.fragment_room_update, container, false);
         roomId=view.findViewById(R.id.updateRoom_roomId);
         updatePic=view.findViewById(R.id.updateRoom_UpdatePic);
-        uploadPic=view.findViewById(R.id.updateRoom_uploadPic);
+        uploadPic=view.findViewById(R.id.updateRoom_image);
         newPrice=view.findViewById(R.id.updateRoom_newPrice);
         picture=view.findViewById(R.id.updateRoom_image);
         updatePrice=view.findViewById(R.id.updateRoom_updatePrice);
@@ -131,72 +131,69 @@ public class RoomUpdateFragment extends Fragment {
             @Override
             public void onClick(View v) {
 //                Toast.makeText(getActivity(),"In here",Toast.LENGTH_SHORT).show();
+                if (!roomId.getText().toString().matches("")) {
+                    if(selectedImage!=null){
+    //                    Toast.makeText(getActivity(),selectedImage.toString(),Toast.LENGTH_SHORT).show();
 
-                if(selectedImage!=null){
-//                    Toast.makeText(getActivity(),selectedImage.toString(),Toast.LENGTH_SHORT).show();
+                        StorageReference storageReference= FirebaseStorage.getInstance().getReference();
+    //                    Toast.makeText(getActivity(),storageReference.toString(),Toast.LENGTH_SHORT).show();
 
-                    StorageReference storageReference= FirebaseStorage.getInstance().getReference();
-//                    Toast.makeText(getActivity(),storageReference.toString(),Toast.LENGTH_SHORT).show();
+                        storageReference=storageReference.child("Room_pic/"+roomId.getText().toString()+new Date().getTime() +".jpg");
+                        storageReference.putFile(selectedImage)
+                                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                    @Override
+                                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                        Task<Uri> task=taskSnapshot.getStorage().getDownloadUrl();
+                                        task.addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                            @Override
+                                            public void onSuccess(Uri uri) {
+                                                String createProfile_dp=uri.toString();
+                                                database= FirebaseDatabase.getInstance();
 
-                    storageReference=storageReference.child("Room_pic/"+roomId.getText().toString()+new Date().getTime() +".jpg");
-                    storageReference.putFile(selectedImage)
-                            .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                                @Override
-                                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                    Task<Uri> task=taskSnapshot.getStorage().getDownloadUrl();
-                                    task.addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                        @Override
-                                        public void onSuccess(Uri uri) {
-                                            String createProfile_dp=uri.toString();
-                                            database= FirebaseDatabase.getInstance();
-//        reference=database.getReference("Users/"+currentuser+"/Profile");
-                                            showRoomReference=database.getReference("Room/");
-                                            showRoomReference.addValueEventListener(new ValueEventListener() {
-                                                @Override
-                                                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                                    for(DataSnapshot data:snapshot.getChildren()){
-                                                        if(data.child("roomId").getValue(String.class).equals(roomId.getText().toString())){
-                                                            DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Room").child(data.getKey().toString());
-                                                            mDatabase.child("pic").setValue(createProfile_dp);
-//                                                            Toast.makeText(getContext(),"Picture Updated",Toast.LENGTH_SHORT).show();
+                                                showRoomReference=database.getReference("Room/");
+                                                showRoomReference.addValueEventListener(new ValueEventListener() {
+                                                    @Override
+                                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                        for(DataSnapshot data:snapshot.getChildren()){
+                                                            if(data.child("roomId").getValue(String.class).equals(roomId.getText().toString())){
+                                                                DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Room").child(data.getKey().toString());
+                                                                mDatabase.child("pic").setValue(createProfile_dp);
+    //                                                            Toast.makeText(getContext(),"Picture Updated",Toast.LENGTH_SHORT).show();
+                                                            }
+
                                                         }
+                                                    }
+
+                                                    @Override
+                                                    public void onCancelled(@NonNull DatabaseError error) {
 
                                                     }
-                                                }
-
-                                                @Override
-                                                public void onCancelled(@NonNull DatabaseError error) {
-
-                                                }
-                                            });
+                                                });
 
 
-                                        }
-                                    })
-                                            .addOnFailureListener(new OnFailureListener() {
-                                                @Override
-                                                public void onFailure(@NonNull Exception e) {
-                                                }
-                                            });
-                                }
-                            })
-                            .addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(
-                                            getActivity(),
-                                            "Picture update failed",
-                                            Toast.LENGTH_LONG).show();
+                                            }
+                                        })
+                                                .addOnFailureListener(new OnFailureListener() {
+                                                    @Override
+                                                    public void onFailure(@NonNull Exception e) {
+                                                    }
+                                                });
+                                    }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Toast.makeText(
+                                                getActivity(),
+                                                "Picture update failed",
+                                                Toast.LENGTH_LONG).show();
 
-                                }
-                            });
+                                    }
+                                });
 
-                }
-                else{
-//                    Toast.makeText(
-//                            createProfile.this,
-//                            "Select Display Picture",
-//                            Toast.LENGTH_LONG).show();
+                    }
+                } else {
+                    Toast.makeText(getContext(), "Please enter Room Id", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -204,6 +201,7 @@ public class RoomUpdateFragment extends Fragment {
         uploadPic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent=new Intent();
                 intent.setAction(Intent.ACTION_GET_CONTENT);
                 intent.setType("image/*");
