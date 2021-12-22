@@ -28,6 +28,7 @@ public class SigninActivity extends AppCompatActivity {
     TextView txtView_email;
     TextView txtView_password;
     TextView txtView_confirmpassword;
+    TextView txtView_name, txtView_contactno, txtView_address, txtView_details;
 
 
     private FirebaseAuth mAuth;
@@ -41,6 +42,10 @@ public class SigninActivity extends AppCompatActivity {
         txtView_email = findViewById(R.id.signin_emailfield);
         txtView_password = findViewById(R.id.signin_passwordfield);
         txtView_confirmpassword = findViewById(R.id.signin_confirmpasswordfield);
+        txtView_name = findViewById(R.id.signin_namefield);
+        txtView_contactno = findViewById(R.id.signin_contactnofield);
+        txtView_address = findViewById(R.id.signin_addressfield);
+        txtView_details = findViewById(R.id.signin_biofield);
 
         btn_signup = findViewById(R.id.signin_signin);
         btn_signup.setOnClickListener(view -> initiateSignIn());
@@ -50,6 +55,11 @@ public class SigninActivity extends AppCompatActivity {
         String email = txtView_email.getText().toString();
         String password = txtView_password.getText().toString();
         String confirmpassword = txtView_confirmpassword.getText().toString();
+        String name = txtView_name.getText().toString();
+        String contactno = txtView_contactno.getText().toString();
+        String address = txtView_address.getText().toString();
+        String details = txtView_details.getText().toString();
+
 
         if (password.equals(confirmpassword)) {
             mAuth.createUserWithEmailAndPassword(email, password)
@@ -70,7 +80,7 @@ public class SigninActivity extends AppCompatActivity {
 
                                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                                 DatabaseReference myRef = database.getReference("users/" + userid + "/Profile");
-                                Profile userProfile = new Profile(userid, "Name", email, "03010000000", "A/0 street 00", "lorem ipsum", -1L); //name email phone address bio
+                                Profile userProfile = new Profile(userid, name, email, contactno, address, details, 0L); //name email phone address bio
                                 myRef.setValue(userProfile);
                                 //----------------------------------
 
