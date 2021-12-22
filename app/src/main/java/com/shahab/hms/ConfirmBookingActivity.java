@@ -105,6 +105,28 @@ public class ConfirmBookingActivity extends AppCompatActivity {
             }
         });
 
+        DatabaseReference package_ref = database.getReference("/Package");
+
+        package_ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot data:snapshot.getChildren()) {
+                    String to_add_id = data.child("id").getValue().toString();
+
+                    if (to_add_id.equals(packageId)) {
+                        package_desc.setText(data.child("desc").getValue().toString());
+
+                    }
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
 
 
     }
